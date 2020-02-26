@@ -17,6 +17,7 @@ var controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.screenSpacePanning = false;
+controls.enablePan = false;
 controls.minDistance = 1000;
 controls.maxDistance = 5000;
 

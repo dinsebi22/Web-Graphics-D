@@ -12,18 +12,6 @@ camera.rotation.x = -Math.PI * 0.28
 camera.rotateY(-30 * THREE.Math.DEG2RAD)
 camera.rotateZ(-30 * THREE.Math.DEG2RAD)
 
-
-// var mouseX = 0;
-// var mouseY = 0;
-// var windowHalfX = window.innerWidth / 2;
-// var windowHalfY = window.innerHeight / 2;
-
-// function onDocumentMouseMove(event) {
-//     mouseX = event.clientX - windowHalfX;
-//     mouseY = event.clientY - windowHalfY;
-// }
-// document.addEventListener('mousemove', onDocumentMouseMove, false);
-
 function resizeRendererToDisplaySize(renderer) {
     const canvas = renderer.domElement;
     const pixelRatio = window.devicePixelRatio;
@@ -86,9 +74,6 @@ function cubes(xCount, yCount, zCount) {
         cubesArr.push(depth)
     }
 }
-
-addLight();
-cubes(10, 10, 10);
 
 function checkIfExists(cell) {
     var exists = 0;
@@ -200,32 +185,21 @@ function removeObject(obj) {
     scene.remove(object);
 }
 
-let count = 0;
-
 function animate() {
     checkResizeRendererDisplay(resizeRendererToDisplaySize(renderer));
-
-    // camera.position.x = 5 + (mouseX - camera.position.x) * .01;
-    // camera.position.y = 10 + (-mouseY - camera.position.y) * .01;
-    console.log('Gen: ' + count);
-    count++;
-
     doGeneration(cubesArr);
-
     renderer.render(scene, camera)
         // requestAnimationFrame(animate)
-
 }
+
+
+addLight();
+cubes(10, 10, 10);
 
 // requestAnimationFrame(animate);
 
 setInterval(() => {
     checkResizeRendererDisplay(resizeRendererToDisplaySize(renderer));
-
-    console.log('Gen: ' + count);
-    count++;
-
     doGeneration(cubesArr);
-
     renderer.render(scene, camera)
-}, 100);
+}, 500);

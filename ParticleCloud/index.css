@@ -1,0 +1,13 @@
+#canvas {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+html,
+body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script src="https://fariskassim.com/stage/rebel9/teaf/blob/v4/js/perlin.js"></script>
+
+    <script type="x-shader/x-vertex" id="vertexshader">
+
+      void main() {
+
+      	gl_PointSize = 5.0;
+
+      	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );;
+
+      }
+    </script>
+
+    <script type="x-shader/x-fragment" id="fragmentshader">
+
+
+      void main() {
+
+      	gl_FragColor = vec4( 0.7 , 0.93 , 1.0 ,1.0 );
+
+      }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r120/three.min.js"></script>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

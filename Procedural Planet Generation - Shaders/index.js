@@ -6,6 +6,14 @@ const renderer = new THREE.WebGLRenderer({ canvas });
 
 let planet;
 let water;
+let terrainDivisions = 7;
+let waterDivisions = 5;
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    terrainDivisions = 6;
+    waterDivisions = 5;
+}
+
 
 let paramsForWork = {
     noiseFactor: 5,
@@ -153,9 +161,13 @@ controls.minDistance = 20;
 controls.update();
 
 
+function setFog(color, near, far) {
+    scene.fog = new THREE.Fog(color, near, far);
+}
+
 function init() {
-    let geometry = new THREE.IcosahedronBufferGeometry(10, 7);
-    let geometry2 = new THREE.IcosahedronBufferGeometry(10.4, 5);
+    let geometry = new THREE.IcosahedronBufferGeometry(10, terrainDivisions);
+    let geometry2 = new THREE.IcosahedronBufferGeometry(10.4, waterDivisions);
 
     var customUniforms = {
         time: { type: "f", value: 0.0 },
@@ -239,7 +251,7 @@ function init() {
 
 var gui = new dat.GUI();
 
-gui.add(paramsForWork, "noiseFactor").min(0).max(10).step(0.5).listen();
+gui.add(paramsForWork, "noiseFactor").min(0).max(11).step(0.5).listen();
 gui.add(paramsForWork, "noiseOffset").min(0).max(100).step(1).listen();
 gui.add(paramsForWork, "detail").min(0).max(10).step(0.5).listen();
 gui.add(paramsForWork, "smoothness").min(1.5).max(15).step(0.0001).listen();
@@ -267,13 +279,3 @@ function render(time) {
     renderer.render(scene, camera);
     requestAnimationFrame(render);
 }
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////

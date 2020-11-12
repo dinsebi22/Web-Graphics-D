@@ -34,7 +34,7 @@ controls.screenSpacePanning = false;
 
 controls.maxDistance = 100;
 
-controls.maxPolarAngle = Math.PI / 2.2;
+controls.maxPolarAngle = Math.PI / 2.5;
 controls.minPolarAngle = Math.PI / 4;
 controls.maxAzimuthAngle = Math.PI / 5;
 controls.minAzimuthAngle = -Math.PI / 5;

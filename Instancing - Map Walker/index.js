@@ -271,7 +271,7 @@ function animate(time) {
   instancedMesh.material.uniforms["cameraPos"].value = camera.position;
 
   instancedMesh.position.x = camera.position.x - countOffset;
-  instancedMesh.position.z = camera.position.z - countOffset * 1.9;
+  instancedMesh.position.z = camera.position.z - countOffset * 1.85;
 
   checkResizeRenderDisplay(resizeRendererToDisplaySize(renderer));
 

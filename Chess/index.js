@@ -15,6 +15,21 @@ let blackPieces = [];
 let INTERSECTED;
 let selectedPiece;
 
+function addEventListeners() {
+    if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+        )
+    ) {
+
+        // window.addEventListener('touchstart', mouseRay, false);
+        window.addEventListener('touchstart', onTouchMove, false);
+    } else {
+
+        window.addEventListener('click', onMouseMove, false);
+    }
+}
+
 function initCanvas() {
     canvas = document.createElement('canvas');
     canvas.width = window.innerWidth;
@@ -337,8 +352,6 @@ function addPiecesToScene() {
     }
 }
 
-window.addEventListener('click', mouseRay, false);
-
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -346,6 +359,15 @@ const mouse = new THREE.Vector2();
 function onMouseMove(event) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    mouseRay();
+}
+
+function onTouchMove(event) {
+    mouse.x = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.touches[0].clientY / window.innerHeight) * 2 + 1;
+
+    mouseRay();
 }
 
 function highlightSelectedPiece(selectedPiece) {
@@ -375,7 +397,6 @@ function unHighlightPiece() {
 }
 
 function mouseRay() {
-
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(scene.children);
 
@@ -498,7 +519,8 @@ function render(time) {
 
 init();
 initBoard();
-window.addEventListener('mousemove', onMouseMove, false);
+addEventListeners();
+
 
 
 

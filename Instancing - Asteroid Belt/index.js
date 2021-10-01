@@ -1,5 +1,4 @@
 import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js";
-import { BufferGeometryUtils } from "https://threejs.org/examples/jsm/utils/BufferGeometryUtils.js";
 
 const canvas = document.querySelector("#canvas");
 const renderer = new THREE.WebGLRenderer({ canvas });
